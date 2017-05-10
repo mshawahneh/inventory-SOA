@@ -18,7 +18,7 @@ import com.inventory.manage.repositories.ProductRepository;
  */
 @Service("productsService")
 @Transactional
-public class ProductsServiceImpl implements ProductsService {
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;

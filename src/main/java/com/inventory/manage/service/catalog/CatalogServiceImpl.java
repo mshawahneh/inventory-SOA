@@ -47,4 +47,10 @@ public class CatalogServiceImpl implements CatalogService {
 		return false;
 	}
 
+	@Override
+	public List<Catalog> getAllCatalogsBySupplier(String supplier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

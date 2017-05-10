@@ -1,5 +1,3 @@
-package pro1;
-
  /**
   * 
   */
@@ -18,7 +16,7 @@ package pro1;
  import org.springframework.web.bind.annotation.RestController;
  
  import com.inventory.manage.model.Payment;
- import com.inventory.manage.service.payment.PaymentService;
+import com.inventory.manage.service.payment.PaymentService;
  
  /**
   * @author Noura
@@ -39,9 +37,9 @@ package pro1;
  	public ResponseEntity<Payment> addItem(@RequestBody  Payment payment, 
  			HttpServletRequest request) {
  		
- 		if (paymentService.isExist(payment.getName())) {
- 			return new ResponseEntity<Payment>(HttpStatus.CONFLICT);
- 		}
+// 		if (paymentService.isExist(payment)) {
+// 			return new ResponseEntity<Payment>(HttpStatus.CONFLICT);
+// 		}
  		
  		Payment itemRes = paymentService.addPayment(payment);
  		

@@ -18,7 +18,7 @@ import com.inventory.manage.repositories.PaymentRepository;
  */
 @Service("paymentsService")
 @Transactional
-public class PaymentsServiceImpl implements PaymentsService {
+public class PayementServiceImpl implements PaymentService {
 
 	@Autowired
 	private PaymentRepository paymentRepository;

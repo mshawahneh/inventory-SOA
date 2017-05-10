@@ -36,9 +36,9 @@ public class MailController {
 	public ResponseEntity<Mail> sendEmail(@RequestBody  Mail mail, 
 			HttpServletRequest request) {
 		
-		Item itemRes = mailService.sendEmail(mail);
+		//Item itemRes = mailService.sendEmail(mail);
 		
-		return new ResponseEntity<Item>(itemRes, HttpStatus.OK);
+		return new ResponseEntity<Mail>(mail, HttpStatus.OK);
 	}
 
 }

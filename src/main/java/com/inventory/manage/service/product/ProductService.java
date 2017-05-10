@@ -11,7 +11,7 @@ import com.inventory.manage.model.Product;
  * @author Noura
  *
  */
-public interface ProductsService {
+public interface ProductService {
 
 	/**
 	 * Add new product

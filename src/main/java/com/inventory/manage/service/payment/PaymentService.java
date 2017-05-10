@@ -11,7 +11,7 @@ import com.inventory.manage.model.Payment;
  * @author Noura
  *
  */
-public interface PaymentsService {
+public interface PaymentService {
 
 	/**
 	 * Add new payment
