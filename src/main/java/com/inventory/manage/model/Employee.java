@@ -4,86 +4,95 @@
 package com.inventory.manage.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
- * @author mshawahn
+ * @author Rami
  *
  */
 public class Employee implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
+	private long id;
+	
+	private String name;
 
+	private String address;
 
+	private String phone;
 
-	private String EmployeeID;
-	private String EmployeeFirstName;
-	private String EmployeeLastName;
-	private Date EmployeeBirthDate;
-	private Date EmployeeHireDate;
-	private double salary;
-	
-	
-	
-	public Employee() {
-		super();
-		// TODO Auto-generated constructor stub
+	private String email;
+
+	private String companyName;
+
+	private String notes;
+
+	private String website;
+
+	public String getName() {
+		return name;
 	}
-	public Employee(String employeeID, String employeeFirstName,
-			String employeeLastName, Date employeeBirthDate,
-			Date employeeHireDate, double salary) {
-		super();
-		EmployeeID = employeeID;
-		EmployeeFirstName = employeeFirstName;
-		EmployeeLastName = employeeLastName;
-		EmployeeBirthDate = employeeBirthDate;
-		EmployeeHireDate = employeeHireDate;
-		this.salary = salary;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getEmployeeID() {
-		return EmployeeID;
+
+	public String getAddress() {
+		return address;
 	}
-	public void setEmployeeID(String employeeID) {
-		EmployeeID = employeeID;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getEmployeeFirstName() {
-		return EmployeeFirstName;
+
+	public String getPhone() {
+		return phone;
 	}
-	public void setEmployeeFirstName(String employeeFirstName) {
-		EmployeeFirstName = employeeFirstName;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public String getEmployeeLastName() {
-		return EmployeeLastName;
+
+	public String getEmail() {
+		return email;
 	}
-	public void setEmployeeLastName(String employeeLastName) {
-		EmployeeLastName = employeeLastName;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public Date getEmployeeBirthDate() {
-		return EmployeeBirthDate;
+
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setEmployeeBirthDate(Date employeeBirthDate) {
-		EmployeeBirthDate = employeeBirthDate;
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public Date getEmployeeHireDate() {
-		return EmployeeHireDate;
+
+	public String getNotes() {
+		return notes;
 	}
-	public void setEmployeeHireDate(Date employeeHireDate) {
-		EmployeeHireDate = employeeHireDate;
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
-	public double getSalary() {
-		return salary;
+
+	public String getWebsite() {
+		return website;
 	}
-	public void setSalary(double salary) {
-		this.salary = salary;
+
+	public void setWebsite(String website) {
+		this.website = website;
 	}
-	@Override
-	public String toString() {
-		return "Employee [EmployeeID=" + EmployeeID + ", EmployeeFirstName="
-				+ EmployeeFirstName + ", EmployeeLastName=" + EmployeeLastName
-				+ ", EmployeeBirthDate=" + EmployeeBirthDate
-				+ ", EmployeeHireDate=" + EmployeeHireDate + ", salary="
-				+ salary + "]";
+
+	public long getId() {
+		return id;
 	}
-	
-	
+
+	public void setId(long id) {
+		this.id = id;
+	}
 	
 }

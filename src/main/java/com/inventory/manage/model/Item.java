@@ -6,100 +6,70 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 
 /**
- * @author mshawahn
+ * @author Rami
  *
  */
 public class Item implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private String itemName;
-	private int itemColor;
-	private char itemSymbol;
-	private int itemWeight;
-   	private int itemValue;
-    
-    
-	public Item() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public Item(String itemName, int itemColor, char itemSymbol,
-			int itemWeight, int itemValue) {
-		super();
-		this.itemName = itemName;
-		this.itemColor = itemColor;
-		this.itemSymbol = itemSymbol;
-		this.itemWeight = itemWeight;
-		this.itemValue = itemValue;
-	}
-
-
-	public String getItemName() {
-		return itemName;
-	}
-
-
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
-	}
-
-
-	public int getItemColor() {
-		return itemColor;
-	}
-
-
-	public void setItemColor(int itemColor) {
-		this.itemColor = itemColor;
-	}
-
-
-	public char getItemSymbol() {
-		return itemSymbol;
-	}
-
-
-	public void setItemSymbol(char itemSymbol) {
-		this.itemSymbol = itemSymbol;
-	}
-
-
-	public int getItemWeight() {
-		return itemWeight;
-	}
-
-
-	public void setItemWeight(int itemWeight) {
-		this.itemWeight = itemWeight;
-	}
-
-
-	public int getItemValue() {
-		return itemValue;
-	}
-
-
-	public void setItemValue(int itemValue) {
-		this.itemValue = itemValue;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Item [itemName=" + itemName + ", itemColor=" + itemColor
-				+ ", itemSymbol=" + itemSymbol + ", itemWeight=" + itemWeight
-				+ ", itemValue=" + itemValue + "]";
-	}
 	
+	private long id;
+	private String name;
+	private String quantity;
+	private String unit;
+	private int sellingPrice;
+	private int purchasePrice;
+	private String description;
+	private String rate;
 	
-    
-    
-    
+	public String getRate() {
+		return rate;
+	}
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+	public int getSellingPrice() {
+		return sellingPrice;
+	}
+	public void setSellingPrice(int sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
+	public int getPurchasePrice() {
+		return purchasePrice;
+	}
+	public void setPurchasePrice(int purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
     
 }
 
