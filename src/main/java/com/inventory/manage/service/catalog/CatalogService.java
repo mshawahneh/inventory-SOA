@@ -32,6 +32,12 @@ public interface CatalogService {
 	 * @return
 	 */
     public List<Catalog> getAllCatalogs();
+    
+    /**
+     * Get all catalogs for specific supplier
+     * @return
+     */
+    public List<Catalog> getAllCatalogsBySupplier(String supplier);
 
     /**
      * Delete an Item

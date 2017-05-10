@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.manage.model.Catalog;
@@ -51,6 +52,20 @@ public class CatalogController {
 		
 		return new ResponseEntity<Catalog>(catalogRes, HttpStatus.OK);
 	}
+
+	/**
+	 * Get all catalogs for specific supplier
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "/bySupplier")
+    public ResponseEntity<List<Catalog>> getAllCatalogsBySupplier(@RequestParam("supplierName")String supplierName) {
+		List<Catalog> catalogs = catalogService.getAllCatalogsBySupplier(supplierName);
+		if(catalogs.isEmpty()){
+			return new ResponseEntity<List<Catalog>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<Catalog>>(catalogs, HttpStatus.OK);		
+    }
+	
 
 	/**
 	 * Get all catalogs
