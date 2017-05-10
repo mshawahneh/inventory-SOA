@@ -37,6 +37,7 @@ public class CatalogController {
 	public ResponseEntity<Catalog> addItem(@RequestBody  Catalog catalog, 
 			HttpServletRequest request) {
 		
+		// Check if catalog existed before
 		if (catalogService.isExist(catalog.getName())) {
 			return new ResponseEntity<Catalog>(HttpStatus.CONFLICT);
 		}
