@@ -29,12 +29,17 @@ public class CatalogController {
 	@Autowired
 	private CatalogService catalogService;
 	
-	
+	/**
+	 * Create new catalog 
+	 * @param catalog
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/create" ,
 			method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
-	public ResponseEntity<Catalog> addItem(@RequestBody  Catalog catalog, 
+	public ResponseEntity<Catalog> addCatalog(@RequestBody  Catalog catalog, 
 			HttpServletRequest request) {
 		
 		// Check if catalog existed before
@@ -42,14 +47,17 @@ public class CatalogController {
 			return new ResponseEntity<Catalog>(HttpStatus.CONFLICT);
 		}
 		
-		Catalog itemRes = catalogService.addCatalog(catalog);
+		Catalog catalogRes = catalogService.addCatalog(catalog);
 		
-		return new ResponseEntity<Catalog>(itemRes, HttpStatus.OK);
+		return new ResponseEntity<Catalog>(catalogRes, HttpStatus.OK);
 	}
 
-
+	/**
+	 * Get all catalogs
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Catalog>> getAllItems() {
+    public ResponseEntity<List<Catalog>> getAllCatalogs() {
 		List<Catalog> catalogs = catalogService.getAllCatalogs();
 		if(catalogs.isEmpty()){
 			return new ResponseEntity<List<Catalog>>(HttpStatus.NO_CONTENT);
@@ -57,10 +65,16 @@ public class CatalogController {
 		return new ResponseEntity<List<Catalog>>(catalogs, HttpStatus.OK);		
     }
 	
+	/**
+	 * Delete catalog
+	 * @param catalog
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.DELETE,  
 			consumes = "application/json",
             produces = "application/json")
-	public ResponseEntity<String> deleteItem(@RequestBody  Catalog catalog, 
+	public ResponseEntity<String> deleteCatalog(@RequestBody  Catalog catalog, 
 			HttpServletRequest request) {
 		
 		boolean result = catalogService.delete(catalog);
