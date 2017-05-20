@@ -6,19 +6,23 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author 
  *
  */
+@Entity
 public class Customer implements Serializable{
 
 
-	
+	@Id
+	private long id;
 	private String CustomerID;
 	private String CustomerFirstName;
 	private String CustomerLastName;
 	private Date CustomerBirthDate;
-	
 	
 	public Customer() {
 		super();
@@ -31,6 +35,14 @@ public class Customer implements Serializable{
 		CustomerFirstName = customerFirstName;
 		CustomerLastName = customerLastName;
 		CustomerBirthDate = customerBirthDate;
+	}
+	
+	private long getId() {
+		return this.id;
+
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public String getCustomerID() {
 		return CustomerID;

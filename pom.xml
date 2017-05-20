@@ -6,7 +6,7 @@
 	<groupId>com.inventory.manage</groupId>
 	<artifactId>inventory</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>inventory-managment</name>
 	<description>Inventory management system</description>
@@ -45,14 +45,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mobile</artifactId>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
@@ -82,6 +88,11 @@
     		<groupId>org.apache.commons</groupId>
     		<artifactId>commons-lang3</artifactId>
     		<version>3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 

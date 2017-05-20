@@ -6,22 +6,28 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author Noura
  *
  */
+@Entity
 public class Order implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	@Id
 	private long id;
+	
 	private String name;
 	private String quantity;
 	private Date dateplaced;
 	private Date dateReceived;
 	private boolean outstanding;
 	private boolean addedToStock;
+	
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -23,8 +23,9 @@ import com.inventory.manage.service.order.OrderService;
  *
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/order")
 public class OrderController {
+	
 	@Autowired
 	OrderService orderService;
 	

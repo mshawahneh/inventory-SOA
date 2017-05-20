@@ -5,14 +5,19 @@ package com.inventory.manage.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author Rami
  *
  */
+@Entity
 public class Item implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private long id;
 	private String name;
 	private String quantity;
@@ -21,6 +26,10 @@ public class Item implements Serializable {
 	private int purchasePrice;
 	private String description;
 	private String rate;
+	
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public String getRate() {
 		return rate;

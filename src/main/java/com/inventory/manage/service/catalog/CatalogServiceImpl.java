@@ -16,7 +16,7 @@ import com.inventory.manage.repositories.ItemRepository;
  * @author Rami
  *
  */
-@Service("itemsService")
+@Service("catalogService")
 @Transactional
 public class CatalogServiceImpl implements CatalogService {
 

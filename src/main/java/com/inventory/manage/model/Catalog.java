@@ -3,11 +3,17 @@
  */
 package com.inventory.manage.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author rkhalayl
  *
  */
+@Entity
 public class Catalog {
+	
+	@Id
 	private long id; 
 	private String name;
 	private double price;
@@ -16,6 +22,10 @@ public class Catalog {
 	private String depreciation;
 	private float rate; 
 	private String supplier;
+	
+	public Catalog() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public long getId() {
 		return id;

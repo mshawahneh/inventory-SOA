@@ -23,11 +23,12 @@ import com.inventory.manage.service.product.ProductService;
  *
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/product")
 public class WarehouseController {
 	
 	@Autowired
 	ProductService productService;
+	
 	@RequestMapping(value = "/create" ,
 			method = RequestMethod.POST,  
 			consumes = "application/json",

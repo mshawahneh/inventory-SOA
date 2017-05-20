@@ -5,16 +5,21 @@ package com.inventory.manage.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author Rami
  *
  */
+@Entity
 public class Employee implements Serializable{
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private long id;
 	
 	private String name;
@@ -31,6 +36,10 @@ public class Employee implements Serializable{
 
 	private String website;
 
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getName() {
 		return name;
 	}

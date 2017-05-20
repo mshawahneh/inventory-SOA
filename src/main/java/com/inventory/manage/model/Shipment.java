@@ -6,10 +6,14 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * @author mshawahn
  *
  */
+@Entity
 public class Shipment implements Serializable {
 
 	/**
@@ -17,6 +21,7 @@ public class Shipment implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private int id;
 	
 	private String address;
