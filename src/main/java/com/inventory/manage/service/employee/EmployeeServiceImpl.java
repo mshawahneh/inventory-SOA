@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Employee;
 import com.inventory.manage.repositories.EmployeeRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author Rami
@@ -25,38 +26,35 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee addEmployee(Employee employee) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(employee);
+		return employee;
 	}
 
 	@Override
 	public Employee updateEmployee(Employee employee) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(employee);
+		return employee;
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		// TODO To be implemented
-		return null;
+		return PersistenceService.getAllEmployees();
 	}
 
 	@Override
-	public Employee getEmployeeById(long id) {
-		// TODO To be implemented
-		return null;
+	public Employee getEmployeeById(String id) {
+		return (Employee)PersistenceService.getById(id);
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO To be implemented
-		return false;
+	public boolean isExist(String id) {
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public boolean delete(Employee employee) {
-		// TODO To be implemented
-		return false;
+		PersistenceService.delete(employee);
+		return true;
 	}
 	
 }

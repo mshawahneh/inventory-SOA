@@ -13,14 +13,14 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Employee implements Serializable{
+public class Employee implements Serializable, Persistable{
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private long id;
+	private String id;
 	
 	private String name;
 
@@ -36,8 +36,16 @@ public class Employee implements Serializable{
 
 	private String website;
 
-	public Employee() {
-		// TODO Auto-generated constructor stub
+	public Employee(String id, String name, String address, String phone, 
+			String email, String companyName, String notes) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.companyName = companyName;
+		this.notes = notes;
+		
 	}
 	
 	public String getName() {
@@ -96,12 +104,18 @@ public class Employee implements Serializable{
 		this.website = website;
 	}
 
-	public long getId() {
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	@Override
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	@Override
+	public String getType() {
+		return "Employee";
 	}
 	
 }

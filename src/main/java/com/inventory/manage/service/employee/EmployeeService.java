@@ -37,7 +37,7 @@ public interface EmployeeService {
 	 * Get employee by Id
 	 * @return
 	 */
-    public Employee getEmployeeById(long id);
+    public Employee getEmployeeById(String id);
  
 	/**
 	 * @return boolean
