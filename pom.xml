@@ -94,6 +94,10 @@
 			<artifactId>derby</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache-clustered</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
