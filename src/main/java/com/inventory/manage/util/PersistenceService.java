@@ -47,6 +47,8 @@ public class PersistenceService {
 		
 		Employee emp1 = new Employee("10", "Mashi el 7al", "Waan ma Kan", "23205555", "email@gmail.com", "ComPany", "Fesh Eshi");
 		Item item1 = new Item("11", "Mak2", "20", "1", 1230, 8977, "Desc fesh", "0.05");
+		Catalog cat1 = new Catalog("12", "Cat Name", 120, 10, 3, "Info cat", 3, "Sup mnee7");
+		
 		persistenceMap.put(customer.getId(), customer);
 		persistenceMap.put(customer1.getId(), customer1);
 		persistenceMap.put(order.getId(), order);
@@ -58,6 +60,7 @@ public class PersistenceService {
 		
 		persistenceMap.put(emp1.getId(), emp1);
 		persistenceMap.put(item1.getId(), item1);
+		persistenceMap.put(cat1.getId(), cat1);
 	}
 
 	public static void update(Persistable itemToSave) {
