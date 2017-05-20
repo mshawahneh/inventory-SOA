@@ -33,7 +33,7 @@ public class PersistenceService {
 		persistenceMap.remove(itemToSave.getId());
 	}
 	
-	public List<Persistable> get(String type){
+	public static List<Persistable> get(String type){
 		
 		Collection<Persistable> items = persistenceMap.values();
 		List<Persistable> resultSet = new ArrayList<Persistable>();
@@ -47,5 +47,7 @@ public class PersistenceService {
 		
 	}
 	
-	
+	public static Object getById(String id){
+		return persistenceMap.get(id);
+	}
 }
