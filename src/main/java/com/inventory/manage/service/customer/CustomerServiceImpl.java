@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Customer;
+import com.inventory.manage.model.Persistable;
 import com.inventory.manage.repositories.CustomerRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author mshawahn
@@ -26,24 +28,24 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceService.save(customer);
+		return (Customer) PersistenceService.getById(customer.getId());
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isExist(String id) {
+		
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public List<Customer> getAllCustomers() {
-		return null;
+		return PersistenceService.getAllCustomers();
 	}
 
 	@Override
 	public boolean delete(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceService.delete(customer);
+		return true;
 	}
 }

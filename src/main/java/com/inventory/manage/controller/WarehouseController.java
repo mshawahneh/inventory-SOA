@@ -23,14 +23,13 @@ import com.inventory.manage.service.product.ProductService;
  *
  */
 @RestController
-@RequestMapping("/api/product")
+@RequestMapping("api/product")
 public class WarehouseController {
 	
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Product> addProduct(@RequestBody  Product product, 
@@ -40,9 +39,9 @@ public class WarehouseController {
 			return new ResponseEntity<Product>(HttpStatus.CONFLICT);
 		}
 		
-		Product payement = productService.addProduct(product);
+		Product product1 = productService.addProduct(product);
 		
-		return new ResponseEntity<Product>(product, HttpStatus.OK);
+		return new ResponseEntity<Product>(product1, HttpStatus.OK);
 	}
 
 
@@ -66,5 +65,18 @@ public class WarehouseController {
 			return new ResponseEntity<String>("{\"result\":\"Deleted Successfully!\"}", HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("Deleted Failed!", HttpStatus.METHOD_NOT_ALLOWED);
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT,  
+			consumes = "application/json",
+            produces = "application/json")
+	public ResponseEntity<String> updateProduct(@RequestBody  Product product, 
+			HttpServletRequest request) {
+		
+		Product prod = productService.addProduct(product);
+		if (prod != null) {
+			return new ResponseEntity<String>("{\"result\":\"Updated Successfully!\"}", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Update Failed!", HttpStatus.METHOD_NOT_ALLOWED);
 	}
 }

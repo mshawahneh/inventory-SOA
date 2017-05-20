@@ -16,6 +16,7 @@
  import org.springframework.web.bind.annotation.RestController;
  
  import com.inventory.manage.model.Payment;
+import com.inventory.manage.model.Product;
 import com.inventory.manage.service.payment.PaymentService;
  
  /**
@@ -23,23 +24,22 @@ import com.inventory.manage.service.payment.PaymentService;
   *
   */
  @RestController
- @RequestMapping("/payments")
+ @RequestMapping("api/payment")
  public class PaymentController {
  	
  	@Autowired
  	private PaymentService paymentService;
  	
  	
- 	@RequestMapping(value = "/create" ,
- 			method = RequestMethod.POST,  
+ 	@RequestMapping(method = RequestMethod.POST,  
  			consumes = "application/json",
              produces = "application/json")
- 	public ResponseEntity<Payment> addItem(@RequestBody  Payment payment, 
+ 	public ResponseEntity<Payment> addPayment(@RequestBody  Payment payment, 
  			HttpServletRequest request) {
  		
-// 		if (paymentService.isExist(payment)) {
-// 			return new ResponseEntity<Payment>(HttpStatus.CONFLICT);
-// 		}
+ 		if (paymentService.isExist(payment.getId())) {
+ 			return new ResponseEntity<Payment>(HttpStatus.CONFLICT);
+ 		}
  		
  		Payment itemRes = paymentService.addPayment(payment);
  		
@@ -48,7 +48,7 @@ import com.inventory.manage.service.payment.PaymentService;
  
  
  	@RequestMapping(method = RequestMethod.GET)
-     public ResponseEntity<List<Payment>> getAllItems() {
+     public ResponseEntity<List<Payment>> getAllPayments() {
  		List<Payment> payments = paymentService.getAllPayments();
  		if(payments.isEmpty()){
  			return new ResponseEntity<List<Payment>>(HttpStatus.NO_CONTENT);
@@ -59,7 +59,7 @@ import com.inventory.manage.service.payment.PaymentService;
  	@RequestMapping(method = RequestMethod.DELETE,  
  			consumes = "application/json",
              produces = "application/json")
- 	public ResponseEntity<String> deleteItem(@RequestBody  Payment payment, 
+ 	public ResponseEntity<String> deletePayment(@RequestBody  Payment payment, 
  			HttpServletRequest request) {
  		
  		boolean result = paymentService.delete(payment);
@@ -68,5 +68,18 @@ import com.inventory.manage.service.payment.PaymentService;
  		}
  		return new ResponseEntity<String>("Deleted Failed!", HttpStatus.METHOD_NOT_ALLOWED);
  	}
+ 	
+ 	@RequestMapping(method = RequestMethod.PUT,  
+			consumes = "application/json",
+            produces = "application/json")
+	public ResponseEntity<String> updateProduct(@RequestBody  Payment payment, 
+			HttpServletRequest request) {
+		
+ 		Payment pay = paymentService.addPayment(payment);
+		if (pay != null) {
+			return new ResponseEntity<String>("{\"result\":\"Updated Successfully!\"}", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Update Failed!", HttpStatus.METHOD_NOT_ALLOWED);
+	}
  
  }

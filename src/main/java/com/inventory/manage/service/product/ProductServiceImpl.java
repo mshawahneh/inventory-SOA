@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Product;
 import com.inventory.manage.repositories.ProductRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author Noura
@@ -25,25 +26,23 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product addProduct(Product product) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(product);
+		return (Product) PersistenceService.getById(product.getId());
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO To be implemented
-		return false;
+	public boolean isExist(String id) {
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public List<Product> getAllProducts() {
-		// TODO To be implemented
-		return null;
+		return PersistenceService.getAllProducts();
 	}
 
 	@Override
 	public boolean delete(Product product) {
-		// TODO To be implemented
-		return false;
+		PersistenceService.delete(product);
+		return true;
 	}
 }

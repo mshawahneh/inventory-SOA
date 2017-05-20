@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Payment;
 import com.inventory.manage.repositories.PaymentRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author Noura
@@ -25,25 +26,24 @@ public class PayementServiceImpl implements PaymentService {
 
 	@Override
 	public Payment addPayment(Payment payment) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(payment);
+		
+		return (Payment) PersistenceService.getById(payment.getId());
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO To be implemented
-		return false;
+	public boolean isExist(String id) {
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public List<Payment> getAllPayments() {
-		// TODO To be implemented
-		return null;
+		return PersistenceService.getAllPayments();
 	}
 
 	@Override
 	public boolean delete(Payment payment) {
-		// TODO To be implemented
-		return false;
+		PersistenceService.delete(payment);
+		return true;
 	}
 }

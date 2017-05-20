@@ -14,7 +14,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Order implements Serializable {
+public class Order implements Serializable, Persistable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -43,8 +43,10 @@ public class Order implements Serializable {
 		this.outstanding = outstanding;
 		this.addedToStock = addedToStock;
 	}
-	public long getId() {
-		return id;
+	
+	@Override
+	public String getId() {
+		return String.valueOf(id);
 	}
 	public void setId(long id) {
 		this.id = id;
@@ -91,6 +93,12 @@ public class Order implements Serializable {
 				+ ", dateplaced=" + dateplaced + ", dateReceived="
 				+ dateReceived + ", outstanding=" + outstanding
 				+ ", addedToStock=" + addedToStock + "]";
+	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return "Order";
 	}
 	
 	

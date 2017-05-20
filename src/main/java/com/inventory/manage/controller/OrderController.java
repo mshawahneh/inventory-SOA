@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.manage.model.Order;
+import com.inventory.manage.model.Product;
 import com.inventory.manage.service.order.OrderService;
 
 /**
@@ -23,14 +24,13 @@ import com.inventory.manage.service.order.OrderService;
  *
  */
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("api/order")
 public class OrderController {
 	
 	@Autowired
 	OrderService orderService;
 	
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Order> addOrder(@RequestBody  Order order, 
@@ -47,7 +47,7 @@ public class OrderController {
 
 
 	@RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Order>> getAllPayaments() {
+    public ResponseEntity<List<Order>> getAllOrders() {
 		List<Order> orders = orderService.getAllOrders();
 		if(orders.isEmpty()){
 			return new ResponseEntity<List<Order>>(HttpStatus.NO_CONTENT);
@@ -58,7 +58,7 @@ public class OrderController {
 	@RequestMapping(method = RequestMethod.DELETE,  
 			consumes = "application/json",
             produces = "application/json")
-	public ResponseEntity<String> deletePayement(@RequestBody  Order order, 
+	public ResponseEntity<String> deleteOrder(@RequestBody  Order order, 
 			HttpServletRequest request) {
 		
 		boolean result = orderService.delete(order);
@@ -67,4 +67,19 @@ public class OrderController {
 		}
 		return new ResponseEntity<String>("Deleted Failed!", HttpStatus.METHOD_NOT_ALLOWED);
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT,  
+			consumes = "application/json",
+            produces = "application/json")
+	public ResponseEntity<String> updateProduct(@RequestBody  Order order, 
+			HttpServletRequest request) {
+		
+		Order ord = orderService.addOrder(order);
+		if (ord != null) {
+			return new ResponseEntity<String>("{\"result\":\"Updated Successfully!\"}", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Update Failed!", HttpStatus.METHOD_NOT_ALLOWED);
+	}
+	
+	
 }

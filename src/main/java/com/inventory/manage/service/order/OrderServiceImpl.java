@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Order;
 import com.inventory.manage.repositories.OrderRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author mshawahn
@@ -25,25 +26,24 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order addOrder(Order order) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceService.save(order);
+		return (Order) PersistenceService.getById(order.getId());
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isExist(String id) {
+		
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public List<Order> getAllOrders() {
-		// TODO Auto-generated method stub
-		return null;
+		return PersistenceService.getAllOrders();
 	}
 
 	@Override
 	public boolean delete(Order order) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceService.delete(order);
+		return true;
 	}
 }

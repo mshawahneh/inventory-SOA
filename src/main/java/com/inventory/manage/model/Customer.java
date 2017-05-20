@@ -14,11 +14,11 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Customer implements Serializable{
+public class Customer implements Serializable, Persistable{
 
 
 	@Id
-	private long id;
+	private String id;
 	private String CustomerID;
 	private String CustomerFirstName;
 	private String CustomerLastName;
@@ -31,19 +31,23 @@ public class Customer implements Serializable{
 	public Customer(String customerID, String customerFirstName,
 			String customerLastName, Date customerBirthDate) {
 		super();
-		CustomerID = customerID;
+		this.id = customerID;
 		CustomerFirstName = customerFirstName;
 		CustomerLastName = customerLastName;
 		CustomerBirthDate = customerBirthDate;
+		
 	}
 	
-	private long getId() {
-		return this.id;
+	@Override
+	public String getId() {
+		return String.valueOf(this.id);
 
 	}
-	public void setId(long id) {
+	
+	public void setId(String id) {
 		this.id = id;
 	}
+	
 	public String getCustomerID() {
 		return CustomerID;
 	}
@@ -73,6 +77,11 @@ public class Customer implements Serializable{
 		return "Customer [CustomerID=" + CustomerID + ", CustomerFirstName="
 				+ CustomerFirstName + ", CustomerLastName=" + CustomerLastName
 				+ ", CustomerBirthDate=" + CustomerBirthDate + "]";
+	}
+
+	@Override
+	public String getType() {
+		return "Customer";
 	}
 	
 	
