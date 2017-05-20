@@ -13,12 +13,12 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Item implements Serializable {
+public class Item implements Serializable, Persistable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private long id;
+	private String id;
 	private String name;
 	private String quantity;
 	private String unit;
@@ -27,8 +27,16 @@ public class Item implements Serializable {
 	private String description;
 	private String rate;
 	
-	public Item() {
-		// TODO Auto-generated constructor stub
+	public Item(String id, String name, String quantity, String unit, 
+			int sellingPrice, int purchasePrice, String description, String rate) {
+		this.id = id;
+		this.name = name;
+		this.quantity = quantity;
+		this.unit = unit;
+		this.sellingPrice = sellingPrice;
+		this.purchasePrice = purchasePrice;
+		this.description = description;
+		this.rate=rate;
 	}
 	
 	public String getRate() {
@@ -73,11 +81,16 @@ public class Item implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	@Override
+	public String getType() {
+		return "Item";
 	}
     
 }

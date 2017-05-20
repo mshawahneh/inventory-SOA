@@ -12,6 +12,7 @@ import java.util.Map;
 
 import com.inventory.manage.model.Customer;
 import com.inventory.manage.model.Employee;
+import com.inventory.manage.model.Item;
 import com.inventory.manage.model.Order;
 import com.inventory.manage.model.Payment;
 import com.inventory.manage.model.Persistable;
@@ -44,7 +45,7 @@ public class PersistenceService {
 		Product product1 = new Product("4041", "Dress", "Shaneil", "1 year");
 		
 		Employee emp1 = new Employee("10", "Mashi el 7al", "Waan ma Kan", "23205555", "email@gmail.com", "ComPany", "Fesh Eshi");
-		
+		Item item1 = new Item("11", "Mak2", "20", "1", 1230, 8977, "Desc fesh", "0.05");
 		persistenceMap.put(customer.getId(), customer);
 		persistenceMap.put(customer1.getId(), customer1);
 		persistenceMap.put(order.getId(), order);
@@ -55,6 +56,7 @@ public class PersistenceService {
 		persistenceMap.put(product1.getId(), product1);
 		
 		persistenceMap.put(emp1.getId(), emp1);
+		persistenceMap.put(item1.getId(), item1);
 	}
 
 	public static void update(Persistable itemToSave) {
@@ -152,5 +154,17 @@ public class PersistenceService {
 		}
 		return resultSet;
 
+	}
+
+	public static List<Item> getAllItems() {
+		Collection<Persistable> items = persistenceMap.values();
+		List<Item> resultSet = new ArrayList<Item>();
+		for (Persistable persistable : items) {
+
+			if (persistable.getType().equals("Item")) {
+				resultSet.add((Item) persistable);
+			}
+		}
+		return resultSet;
 	}
 }

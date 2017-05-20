@@ -5,6 +5,7 @@ package com.inventory.manage.service.item;
 
 import java.util.List;
 
+import com.inventory.manage.model.Employee;
 import com.inventory.manage.model.Item;
 
 /**
@@ -20,6 +21,7 @@ public interface ItemsService {
 	 */
 	public Item addItem(Item item);
 	
+	public Item updateItem(Item item);
 	/**
 	 * 
 	 * @param date
@@ -33,6 +35,8 @@ public interface ItemsService {
 	 * @throws DAOException
 	 */
     public List<Item> getAllItems();
+    
+    public Item getItemById(String id);
 
     /**
      * Delete an Item

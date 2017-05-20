@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Item;
+import com.inventory.manage.model.Item;
 import com.inventory.manage.repositories.ItemRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author Rami
@@ -25,25 +27,34 @@ public class ItemsServiceImpl implements ItemsService {
 
 	@Override
 	public Item addItem(Item item) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(item);
+		return item;
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO To be implemented
-		return false;
+	public Item updateItem(Item item) {
+		PersistenceService.save(item);
+		return item;
 	}
 
 	@Override
 	public List<Item> getAllItems() {
-		// TODO To be implemented
-		return null;
+		return PersistenceService.getAllItems();
+	}
+
+	@Override
+	public Item getItemById(String id) {
+		return (Item)PersistenceService.getById(id);
+	}
+
+	@Override
+	public boolean isExist(String id) {
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public boolean delete(Item item) {
-		// TODO To be implemented
-		return false;
+		PersistenceService.delete(item);
+		return true;
 	}
 }
