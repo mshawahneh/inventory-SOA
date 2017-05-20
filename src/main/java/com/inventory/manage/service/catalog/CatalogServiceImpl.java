@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Catalog;
 import com.inventory.manage.repositories.ItemRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author Rami
@@ -25,32 +26,39 @@ public class CatalogServiceImpl implements CatalogService {
 
 	@Override
 	public Catalog addCatalog(Catalog catalog) {
-		// TODO To be implemented
-		return null;
+		PersistenceService.save(catalog);
+		return catalog;
 	}
 
 	@Override
-	public boolean isExist(String name) {
-		// TODO To be implemented
-		return false;
+	public Catalog updateCatalog(Catalog catalog) {
+		PersistenceService.save(catalog);
+		return catalog;
 	}
 
 	@Override
 	public List<Catalog> getAllCatalogs() {
-		// TODO To be implemented
-		return null;
+		return PersistenceService.getAllCatalogs();
+	}
+
+	@Override
+	public Catalog getCatalogById(String id) {
+		return (Catalog)PersistenceService.getById(id);
+	}
+
+	@Override
+	public boolean isExist(String id) {
+		return PersistenceService.getById(id) != null;
 	}
 
 	@Override
 	public boolean delete(Catalog catalog) {
-		// TODO To be implemented
-		return false;
+		PersistenceService.delete(catalog);
+		return true;
 	}
-
 	@Override
 	public List<Catalog> getAllCatalogsBySupplier(String supplier) {
 		// TODO Auto-generated method stub
-		return null;
+		return PersistenceService.getAllCatalogs();
 	}
-
 }

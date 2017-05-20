@@ -45,4 +45,8 @@ public interface CatalogService {
      * @return
      */
 	public boolean delete(Catalog catalog);
+
+	public Catalog updateCatalog(Catalog catalog);
+
+	public Catalog getCatalogById(String id);
 }

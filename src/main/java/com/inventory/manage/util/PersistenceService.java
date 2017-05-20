@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.inventory.manage.model.Catalog;
 import com.inventory.manage.model.Customer;
 import com.inventory.manage.model.Employee;
 import com.inventory.manage.model.Item;
@@ -163,6 +164,18 @@ public class PersistenceService {
 
 			if (persistable.getType().equals("Item")) {
 				resultSet.add((Item) persistable);
+			}
+		}
+		return resultSet;
+	}
+
+	public static List<Catalog> getAllCatalogs() {
+		Collection<Persistable> items = persistenceMap.values();
+		List<Catalog> resultSet = new ArrayList<Catalog>();
+		for (Persistable persistable : items) {
+
+			if (persistable.getType().equals("Catalog")) {
+				resultSet.add((Catalog) persistable);
 			}
 		}
 		return resultSet;

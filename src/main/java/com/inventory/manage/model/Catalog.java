@@ -11,10 +11,10 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Catalog {
+public class Catalog implements Persistable{
 	
 	@Id
-	private long id; 
+	private String id; 
 	private String name;
 	private double price;
 	private long tax;
@@ -27,10 +27,10 @@ public class Catalog {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -74,5 +74,10 @@ public class Catalog {
 	}
 	public void setSupplier(String supplier) {
 		this.supplier = supplier;
+	}
+
+	@Override
+	public String getType() {
+		return "Catalog";
 	}
 }
