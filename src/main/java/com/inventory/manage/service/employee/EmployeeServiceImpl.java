@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Employee;
 import com.inventory.manage.repositories.EmployeeRepository;
@@ -18,11 +17,11 @@ import com.inventory.manage.util.PersistenceService;
  *
  */
 @Service("employeeService")
-@Transactional
+//@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
+//	@Autowired
+//	private EmployeeRepository employeeRepository;
 
 	@Override
 	public Employee addEmployee(Employee employee) {

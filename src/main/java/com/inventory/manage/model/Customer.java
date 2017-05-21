@@ -6,23 +6,25 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @author 
  *
  */
-@Entity
+//@Entity
 public class Customer implements Serializable, Persistable{
 
 
-	@Id
+	//@Id
 	private String id;
-	private String CustomerID;
+//	private String CustomerID;
 	private String CustomerFirstName;
 	private String CustomerLastName;
 	private Date CustomerBirthDate;
+	private String email;
+	private Long accountBalance;
+	private String currency;
+	private Payment paymentInfo;
 	
 	public Customer() {
 		super();
@@ -48,12 +50,6 @@ public class Customer implements Serializable, Persistable{
 		this.id = id;
 	}
 	
-	public String getCustomerID() {
-		return CustomerID;
-	}
-	public void setCustomerID(String customerID) {
-		CustomerID = customerID;
-	}
 	public String getCustomerFirstName() {
 		return CustomerFirstName;
 	}
@@ -72,9 +68,59 @@ public class Customer implements Serializable, Persistable{
 	public void setCustomerBirthDate(Date customerBirthDate) {
 		CustomerBirthDate = customerBirthDate;
 	}
+	
+	
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the accountBalance
+	 */
+	public Long getAccountBalance() {
+		return accountBalance;
+	}
+	/**
+	 * @param accountBalance the accountBalance to set
+	 */
+	public void setAccountBalance(Long accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+	/**
+	 * @return the currency
+	 */
+	public String getCurrency() {
+		return currency;
+	}
+	/**
+	 * @param currency the currency to set
+	 */
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+	/**
+	 * @return the paymentInfo
+	 */
+	public Payment getPaymentInfo() {
+		return paymentInfo;
+	}
+	/**
+	 * @param paymentInfo the paymentInfo to set
+	 */
+	public void setPaymentInfo(Payment paymentInfo) {
+		this.paymentInfo = paymentInfo;
+	}
 	@Override
 	public String toString() {
-		return "Customer [CustomerID=" + CustomerID + ", CustomerFirstName="
+		return "Customer [CustomerID=" + id + ", CustomerFirstName="
 				+ CustomerFirstName + ", CustomerLastName=" + CustomerLastName
 				+ ", CustomerBirthDate=" + CustomerBirthDate + "]";
 	}

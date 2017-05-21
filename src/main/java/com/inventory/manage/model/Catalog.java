@@ -3,17 +3,15 @@
  */
 package com.inventory.manage.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @author rkhalayl
  *
  */
-@Entity
+//@Entity
 public class Catalog implements Persistable{
 	
-	@Id
+	//@Id
 	private String id; 
 	private String name;
 	private double price;

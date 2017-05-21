@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Payment;
 import com.inventory.manage.repositories.PaymentRepository;
@@ -18,11 +17,11 @@ import com.inventory.manage.util.PersistenceService;
  *
  */
 @Service("paymentsService")
-@Transactional
+//@Transactional
 public class PayementServiceImpl implements PaymentService {
 
-	@Autowired
-	private PaymentRepository paymentRepository;
+//	@Autowired
+//	private PaymentRepository paymentRepository;
 
 	@Override
 	public Payment addPayment(Payment payment) {

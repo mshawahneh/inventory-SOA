@@ -9,6 +9,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @SpringBootApplication
 public class InventoryManagmentApplication extends SpringBootServletInitializer{
 
+	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return configureApplication(builder);
     }

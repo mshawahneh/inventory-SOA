@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author mshawahn
  *
  */
-@RestController
-@RequestMapping("/api")
+//@RestController
+//@RequestMapping("/api")
 public class PersonnelController {
 
 }

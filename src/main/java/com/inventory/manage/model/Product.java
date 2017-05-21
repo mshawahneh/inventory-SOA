@@ -5,14 +5,12 @@ package com.inventory.manage.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @author mshawahn
  *
  */
-@Entity
+//@Entity
 public class Product implements Serializable, Persistable {
 
 	/**
@@ -20,7 +18,7 @@ public class Product implements Serializable, Persistable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	//@Id
 	private String id;
 	private String category;
 	private String supplier;

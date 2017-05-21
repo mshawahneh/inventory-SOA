@@ -6,19 +6,17 @@ package com.inventory.manage.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @author Noura
  *
  */
-@Entity
+//@Entity
 public class Order implements Serializable, Persistable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	//@Id
 	private long id;
 	
 	private String name;

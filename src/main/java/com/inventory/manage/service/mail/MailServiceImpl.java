@@ -5,7 +5,6 @@ package com.inventory.manage.service.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.inventory.manage.model.Mail;
 import com.inventory.manage.repositories.MailRepository;
@@ -15,11 +14,11 @@ import com.inventory.manage.repositories.MailRepository;
  *
  */
 @Service("mailService")
-@Transactional
+//@Transactional
 public class MailServiceImpl implements MailService {
 
-	@Autowired
-	private MailRepository mailRepository;
+//	@Autowired
+//	private MailRepository mailRepository;
 
 	/**
 	 * Send an email

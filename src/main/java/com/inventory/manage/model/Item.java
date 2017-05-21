@@ -5,19 +5,17 @@ package com.inventory.manage.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * @author Rami
  *
  */
-@Entity
+//@Entity
 public class Item implements Serializable, Persistable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	//@Id
 	private String id;
 	private String name;
 	private String quantity;
