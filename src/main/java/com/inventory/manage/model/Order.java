@@ -5,6 +5,7 @@ package com.inventory.manage.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -17,26 +18,33 @@ public class Order implements Serializable, Persistable {
 	private static final long serialVersionUID = 1L;
 	
 	//@Id
-	private long id;
+	private String id;
 	
-	private String name;
-	private String quantity;
-	private Date dateplaced;
-	private Date dateReceived;
+	private Customer customer;
+	private String number;
+	private long quantity;
+	private String datePlaced;
+	private String dateReceived;
 	private boolean outstanding;
 	private boolean addedToStock;
+	private List<Item> purchasedItems;
+	private Payment payment;
+	
+	private Shipment shipment;
+	
+	private long total;
 	
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(long id, String name, String quantity, Date dateplaced,
-			Date dateReceived, boolean outstanding, boolean addedToStock) {
+	public Order(String id, String name, long quantity, String dateplaced,
+			String dateReceived, boolean outstanding, boolean addedToStock) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.number = name;
 		this.quantity = quantity;
-		this.dateplaced = dateplaced;
+		this.datePlaced = dateplaced;
 		this.dateReceived = dateReceived;
 		this.outstanding = outstanding;
 		this.addedToStock = addedToStock;
@@ -46,31 +54,31 @@ public class Order implements Serializable, Persistable {
 	public String getId() {
 		return String.valueOf(id);
 	}
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNumber() {
+		return number;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNumber(String name) {
+		this.number = name;
 	}
-	public String getQuantity() {
+	public long getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(long quantity) {
 		this.quantity = quantity;
 	}
-	public Date getDateplaced() {
-		return dateplaced;
+	public String getDateplaced() {
+		return datePlaced;
 	}
-	public void setDateplaced(Date dateplaced) {
-		this.dateplaced = dateplaced;
+	public void setDateStringed(String dateplaced) {
+		this.datePlaced = dateplaced;
 	}
-	public Date getDateReceived() {
+	public String getDateReceived() {
 		return dateReceived;
 	}
-	public void setDateReceived(Date dateReceived) {
+	public void setDateReceived(String dateReceived) {
 		this.dateReceived = dateReceived;
 	}
 	public boolean isOutstanding() {
@@ -85,10 +93,86 @@ public class Order implements Serializable, Persistable {
 	public void setAddedToStock(boolean addedToStock) {
 		this.addedToStock = addedToStock;
 	}
+	
+	/**
+	 * @return the customer
+	 */
+	public Customer getCustomer() {
+		return customer;
+	}
+	/**
+	 * @param customer the customer to set
+	 */
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	/**
+	 * @return the datePlaced
+	 */
+	public String getDatePlaced() {
+		return datePlaced;
+	}
+	/**
+	 * @param datePlaced the datePlaced to set
+	 */
+	public void setDatePlaced(String datePlaced) {
+		this.datePlaced = datePlaced;
+	}
+	/**
+	 * @return the purchasedItems
+	 */
+	public List<Item> getPurchasedItems() {
+		return purchasedItems;
+	}
+	/**
+	 * @param purchasedItems the purchasedItems to set
+	 */
+	public void setPurchasedItems(List<Item> purchasedItems) {
+		this.purchasedItems = purchasedItems;
+	}
+	/**
+	 * @return the payment
+	 */
+	public Payment getPayment() {
+		return payment;
+	}
+	/**
+	 * @param payment the payment to set
+	 */
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+	
+	
+	
+	/**
+	 * @return the shipment
+	 */
+	public Shipment getShipment() {
+		return shipment;
+	}
+	/**
+	 * @param shipment the shipment to set
+	 */
+	public void setShipment(Shipment shipment) {
+		this.shipment = shipment;
+	}
+	/**
+	 * @return the total
+	 */
+	public long getTotal() {
+		return total;
+	}
+	/**
+	 * @param total the total to set
+	 */
+	public void setTotal(long total) {
+		this.total = total;
+	}
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", name=" + name + ", quantity=" + quantity
-				+ ", dateplaced=" + dateplaced + ", dateReceived="
+		return "Order [id=" + id + ", number=" + number + ", quantity=" + quantity
+				+ ", dateplaced=" + datePlaced + ", dateReceived="
 				+ dateReceived + ", outstanding=" + outstanding
 				+ ", addedToStock=" + addedToStock + "]";
 	}

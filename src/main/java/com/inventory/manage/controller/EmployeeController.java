@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("api/employee")
 public class EmployeeController {
 	
 	@Autowired
@@ -37,14 +37,13 @@ public class EmployeeController {
 	
 	private HealthInfo healthInfo = new HealthInfoImpl();
 	
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Employee> addEmployee(@RequestBody  Employee employee, 
 			HttpServletRequest request) {
 		
-		if (employeeService.isExist(employee.getName())) {
+		if (employeeService.isExist(employee.getId())) {
 			return new ResponseEntity<Employee>(HttpStatus.CONFLICT);
 		}
 		

@@ -41,9 +41,9 @@ import com.inventory.manage.service.payment.PaymentService;
  			return new ResponseEntity<Payment>(HttpStatus.CONFLICT);
  		}
  		
- 		Payment itemRes = paymentService.addPayment(payment);
+ 		Payment paymentItem = paymentService.addPayment(payment);
  		
- 		return new ResponseEntity<Payment>(itemRes, HttpStatus.OK);
+ 		return new ResponseEntity<Payment>(paymentItem, HttpStatus.OK);
  	}
  
  

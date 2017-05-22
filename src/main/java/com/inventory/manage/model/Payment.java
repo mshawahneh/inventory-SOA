@@ -4,6 +4,7 @@
 package com.inventory.manage.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
@@ -20,24 +21,25 @@ public class Payment implements Serializable, Persistable {
 	private static final long serialVersionUID = 1L;
 	
 	//@Id
-	private long id;
+	private String id;
 
 	String method;
 	String card;
-	Customer payer;
 	
 	int state = AUTHORIZED;
 	
-	String createTime;
+	Date createTime;
 	
-	String updateTime;
+	Date updateTime;
+	
+
 	
 	public Payment() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	public Payment(long id, String method, String card) {
+	public Payment(String id, String method, String card) {
 		super();
 		this.id = id;
 		this.method = method;
@@ -65,7 +67,7 @@ public class Payment implements Serializable, Persistable {
 	}
 
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -73,22 +75,6 @@ public class Payment implements Serializable, Persistable {
 	public String getId() {
 		return String.valueOf(id);
 	}
-
-	/**
-	 * @return the payer
-	 */
-	public Customer getPayer() {
-		return payer;
-	}
-
-
-	/**
-	 * @param payer the payer to set
-	 */
-	public void setPayer(Customer payer) {
-		this.payer = payer;
-	}
-
 
 	/**
 	 * @return the state
@@ -109,7 +95,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @return the createTime
 	 */
-	public String getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
@@ -117,7 +103,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @param createTime the createTime to set
 	 */
-	public void setCreateTime(String createTime) {
+	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 
@@ -125,7 +111,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @return the updateTime
 	 */
-	public String getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
@@ -133,7 +119,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @param updateTime the updateTime to set
 	 */
-	public void setUpdateTime(String updateTime) {
+	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 

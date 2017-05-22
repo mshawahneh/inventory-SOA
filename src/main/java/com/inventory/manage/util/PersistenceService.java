@@ -14,10 +14,12 @@ import com.inventory.manage.model.Catalog;
 import com.inventory.manage.model.Customer;
 import com.inventory.manage.model.Employee;
 import com.inventory.manage.model.Item;
+import com.inventory.manage.model.ItemStatus;
 import com.inventory.manage.model.Order;
 import com.inventory.manage.model.Payment;
 import com.inventory.manage.model.Persistable;
 import com.inventory.manage.model.Product;
+import com.inventory.manage.model.Shipment;
 
 /**
  * @author mshawahn
@@ -25,6 +27,7 @@ import com.inventory.manage.model.Product;
  */
 public class PersistenceService {
 
+	private static int id = 1;
 	static Map<String, Persistable> persistenceMap = new HashMap<String, Persistable>();
 
 	static{
@@ -35,19 +38,59 @@ public class PersistenceService {
 
 	}
 
+	private static String generateId(){
+		return String.valueOf(id++);
+	}
 	private static void initializeData() {
-		Customer customer = new Customer("1010", "test", "Customer", new Date());
-		Customer customer1 = new Customer("1011", "test1", "Customer", new Date());
-		Order order = new Order(2020, "order1", "2000", new Date(), new Date(), true, true);
-		Order order1 = new Order(2021, "order2", "20002", new Date(), new Date(), true, true);
-		Payment payment = new Payment(3030, "Manual", "2050");
-		Payment payment1 = new Payment(3031, "PayPal", "2051");
-		Product product = new Product("4040", "Eat", "Lacosta", "No gurantee");
-		Product product1 = new Product("4041", "Dress", "Shaneil", "1 year");
+		Employee emp1 = new Employee(generateId(), "Hisham", "Ramallah", "23205555", "hisam@gmail.com", "Easy Inventory", "Effecient");
+		Employee emp = new Employee(generateId(), "Anan", "Birzeit", "23205555", "ana@gmail.com", "Easy Inventory", "bad");
 		
-		Employee emp1 = new Employee("10", "Mashi el 7al", "Waan ma Kan", "23205555", "email@gmail.com", "ComPany", "Fesh Eshi");
-		Item item1 = new Item("11", "Mak2", "20", "1", 1230, 8977, "Desc fesh", "0.05");
-		Catalog cat1 = new Catalog("12", "Cat Name", 120, 10, 3, "Info cat", 3, "Sup mnee7");
+		Product eatProduct = new Product(generateId(), "Eat", "Lacosta", "No gurantee");
+		Product dressProduct = new Product(generateId(), "Dress", "Shaneil", "1 year");
+		
+		
+		Item milkItem = new Item(generateId(), "Milk", 20, "Piece", 80, 50, "Fresh Milk", "0.05");
+		milkItem.setProduct(eatProduct);
+		milkItem.setQuantity(1000);
+		milkItem.setStatus(ItemStatus.IN_STOCK);
+		
+		Item clothsItem = new Item(generateId(), "T-Shirt", 30, "Piece", 100, 40, "Local T-Shirt", "0.05");
+		clothsItem.setProduct(dressProduct);
+		clothsItem.setQuantity(100);
+		clothsItem.setStatus(ItemStatus.IN_STOCK);
+		
+		Payment payment = new Payment(generateId(), "Manual", "2050");
+		Payment payment1 = new Payment(generateId(), "PayPal", "2051");
+		
+		Shipment ship = new Shipment(generateId(), "Ramallah", "25-5-2017", emp1);
+		Shipment ship1 = new Shipment(generateId(), "Ramallah", "27-5-2017", emp);
+		
+		Customer customer = new Customer(generateId(), "Mohammad", "Customer");
+		customer.setPaymentInfo(payment);
+		
+		Customer customer1 = new Customer(generateId(), "Rami", "Customer");
+		customer1.setPaymentInfo(payment1);
+		
+		Order order = new Order(generateId(), "1010", 2000, "20-5-2017", "25-5-2017", true, true);
+		Order order1 = new Order(generateId(), "1011", 20002, "20-5-2017", "26-5-2017", true, true);
+		
+		List<Item> itemsToPurchase = new ArrayList<Item>();
+		itemsToPurchase.add(milkItem);
+		
+		order.setPurchasedItems(itemsToPurchase);
+		order.setCustomer(customer);
+		order.setShipment(ship);
+		
+		List<Item> itemsToPurchase1 = new ArrayList<Item>();
+		itemsToPurchase1.add(clothsItem);
+		
+		order1.setPurchasedItems(itemsToPurchase1);
+		order1.setCustomer(customer1);
+		order1.setShipment(ship1);
+		
+		
+		
+		Catalog cat1 = new Catalog(generateId(), "Cat Name", 120, 10, 3, "Info cat", 3, "Sup mnee7");
 		
 		persistenceMap.put(customer.getId(), customer);
 		persistenceMap.put(customer1.getId(), customer1);
@@ -55,11 +98,15 @@ public class PersistenceService {
 		persistenceMap.put(order1.getId(), order1);
 		persistenceMap.put(payment.getId(), payment);
 		persistenceMap.put(payment1.getId(), payment1);
-		persistenceMap.put(product.getId(), product);
-		persistenceMap.put(product1.getId(), product1);
+		persistenceMap.put(eatProduct.getId(), eatProduct);
+		persistenceMap.put(dressProduct.getId(), dressProduct);
+		persistenceMap.put(ship.getId(), ship);
+		persistenceMap.put(ship1.getId(), ship1);
 		
 		persistenceMap.put(emp1.getId(), emp1);
-		persistenceMap.put(item1.getId(), item1);
+		persistenceMap.put(emp.getId(), emp);
+		persistenceMap.put(milkItem.getId(), milkItem);
+		persistenceMap.put(clothsItem.getId(), clothsItem);
 		persistenceMap.put(cat1.getId(), cat1);
 	}
 
@@ -85,6 +132,20 @@ public class PersistenceService {
 
 	}
 
+	public static List<Shipment> getAllShipments() {
+
+		Collection<Persistable> items = persistenceMap.values();
+		List<Shipment> resultSet = new ArrayList<Shipment>();
+		for (Persistable persistable : items) {
+
+			if (persistable.getType().equals("Shipment")) {
+				resultSet.add((Shipment) persistable);
+			}
+		}
+		return resultSet;
+
+	}
+	
 	public static List<Order> getAllOrders() {
 
 		Collection<Persistable> items = persistenceMap.values();

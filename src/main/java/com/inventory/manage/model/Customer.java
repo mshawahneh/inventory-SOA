@@ -31,12 +31,11 @@ public class Customer implements Serializable, Persistable{
 		// TODO Auto-generated constructor stub
 	}
 	public Customer(String customerID, String customerFirstName,
-			String customerLastName, Date customerBirthDate) {
+			String customerLastName) {
 		super();
 		this.id = customerID;
 		CustomerFirstName = customerFirstName;
 		CustomerLastName = customerLastName;
-		CustomerBirthDate = customerBirthDate;
 		
 	}
 	
@@ -129,9 +128,5 @@ public class Customer implements Serializable, Persistable{
 	public String getType() {
 		return "Customer";
 	}
-	
-	
-	
-	
 
 }

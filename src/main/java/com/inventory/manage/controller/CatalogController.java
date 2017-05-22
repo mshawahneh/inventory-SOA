@@ -24,7 +24,7 @@ import com.inventory.manage.service.catalog.CatalogService;
  *
  */
 @RestController
-@RequestMapping("/catalog")
+@RequestMapping("api/catalog")
 public class CatalogController {
 	
 	@Autowired
@@ -36,8 +36,7 @@ public class CatalogController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Catalog> addCatalog(@RequestBody  Catalog catalog, 
@@ -57,7 +56,7 @@ public class CatalogController {
 	 * Get all catalogs for specific supplier
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.GET, value = "/bySupplier")
+	@RequestMapping(method = RequestMethod.GET, value = "/supplier")
     public ResponseEntity<List<Catalog>> getAllCatalogsBySupplier(@RequestParam("supplierName")String supplierName) {
 		List<Catalog> catalogs = catalogService.getAllCatalogsBySupplier(supplierName);
 		if(catalogs.isEmpty()){

@@ -68,10 +68,6 @@ public class Product implements Serializable, Persistable {
 		this.guaranteeInfo = guaranteeInfo;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String getId() {
 		// TODO Auto-generated method stub

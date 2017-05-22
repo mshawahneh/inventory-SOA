@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.inventory.manage.model.Shipment;
 import com.inventory.manage.repositories.ShipmentRepository;
+import com.inventory.manage.util.PersistenceService;
 
 /**
  * @author mshawahn
@@ -24,37 +25,35 @@ public class ShipmentServiceImpl implements ShipmentService {
 
 	@Override
 	public Shipment addShipment(Shipment model) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceService.save(model);
+		return (Shipment)PersistenceService.getById(model.getId());
 	}
 
 	@Override
 	public void updateShipment(Shipment model) {
-		// TODO Auto-generated method stub
-		
+		addShipment(model);
 	}
 
 	@Override
 	public boolean deleteShipment(Shipment model) {
-		// TODO Auto-generated method stub
-		return false;
+		PersistenceService.delete(model);
+		return true;
 	}
 
 	@Override
 	public boolean isExist(Shipment model) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return PersistenceService.getById(model.getId()) != null;
 	}
 
 	@Override
 	public Shipment findShipmentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (Shipment) PersistenceService.getById(String.valueOf(id));
 	}
 
 	@Override
 	public List<Shipment> getAllShipments() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return PersistenceService.getAllShipments();
 	}
 }

@@ -23,14 +23,13 @@ import com.inventory.manage.service.mail.MailService;
  *
  */
 @RestController
-@RequestMapping("/mail")
+@RequestMapping("api/mail")
 public class MailController {
 	
 	@Autowired
 	private MailService mailService;
 	
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Mail> sendEmail(@RequestBody  Mail mail, 

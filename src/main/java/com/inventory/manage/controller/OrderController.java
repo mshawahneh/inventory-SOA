@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.manage.model.Order;
-import com.inventory.manage.model.Product;
 import com.inventory.manage.service.order.OrderService;
 
 /**
@@ -36,13 +35,24 @@ public class OrderController {
 	public ResponseEntity<Order> addOrder(@RequestBody  Order order, 
 			HttpServletRequest request) {
 		
-		if (orderService.isExist(order.getName())) {
+		if (orderService.isExist(order.getId())) {
 			return new ResponseEntity<Order>(HttpStatus.CONFLICT);
 		}
+		if(order.getPurchasedItems() == null || order.getPurchasedItems().isEmpty()){
+			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+		}
 		
-		Order payement = orderService.addOrder(order);
+		if(order.getCustomer() == null){
+			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+		}
 		
-		return new ResponseEntity<Order>(order, HttpStatus.OK);
+		if(order.getShipment() == null){
+			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+		}
+		
+		Order order1 = orderService.addOrder(order);
+		
+		return new ResponseEntity<Order>(order1, HttpStatus.OK);
 	}
 
 

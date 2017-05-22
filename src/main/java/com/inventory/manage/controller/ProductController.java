@@ -24,7 +24,7 @@ import com.inventory.manage.service.product.ProductService;
  */
 @RestController
 @RequestMapping("api/product")
-public class WarehouseController {
+public class ProductController {
 	
 	@Autowired
 	ProductService productService;

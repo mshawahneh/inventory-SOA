@@ -18,14 +18,16 @@ public class Item implements Serializable, Persistable {
 	//@Id
 	private String id;
 	private String name;
-	private String quantity;
+	private long quantity;
 	private String unit;
 	private int sellingPrice;
 	private int purchasePrice;
 	private String description;
 	private String rate;
+	private Product product;
+	private ItemStatus status;
 	
-	public Item(String id, String name, String quantity, String unit, 
+	public Item(String id, String name, long quantity, String unit, 
 			int sellingPrice, int purchasePrice, String description, String rate) {
 		this.id = id;
 		this.name = name;
@@ -49,10 +51,10 @@ public class Item implements Serializable, Persistable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getQuantity() {
+	public long getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(String quantity) {
+	public void setQuantity(long quantity) {
 		this.quantity = quantity;
 	}
 	public String getUnit() {
@@ -84,6 +86,34 @@ public class Item implements Serializable, Persistable {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the product
+	 */
+	public Product getProduct() {
+		return product;
+	}
+
+	/**
+	 * @param product the product to set
+	 */
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public ItemStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(ItemStatus status) {
+		this.status = status;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inventory.manage.model.Order;
 import com.inventory.manage.model.Shipment;
 import com.inventory.manage.service.shipment.ShipmentService;
 
@@ -23,13 +24,13 @@ import com.inventory.manage.service.shipment.ShipmentService;
  *
  */
 @RestController
-@RequestMapping("/shipment")
+@RequestMapping("api/shipment")
 public class ShipmentController {
 
 	@Autowired
 	ShipmentService shipmentService;
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Shipment> addShipment(@RequestBody  Shipment shipment, 
@@ -41,7 +42,7 @@ public class ShipmentController {
 		
 		Shipment ship = shipmentService.addShipment(shipment);
 		
-		return new ResponseEntity<Shipment>(shipment, HttpStatus.OK);
+		return new ResponseEntity<Shipment>(ship, HttpStatus.OK);
 	}
 
 
@@ -53,6 +54,19 @@ public class ShipmentController {
 		}
 		return new ResponseEntity<List<Shipment>>(shipments, HttpStatus.OK);		
     }
+	
+	@RequestMapping(method = RequestMethod.PUT,  
+			consumes = "application/json",
+            produces = "application/json")
+	public ResponseEntity<String> updateShipment(@RequestBody  Shipment shipment, 
+			HttpServletRequest request) {
+		
+		Shipment ship = shipmentService.addShipment(shipment);
+		if (ship != null) {
+			return new ResponseEntity<String>("{\"result\":\"Updated Successfully!\"}", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Update Failed!", HttpStatus.METHOD_NOT_ALLOWED);
+	}
 	
 	@RequestMapping(method = RequestMethod.DELETE,  
 			consumes = "application/json",

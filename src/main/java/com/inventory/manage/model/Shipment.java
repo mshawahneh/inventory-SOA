@@ -12,7 +12,7 @@ import java.util.Date;
  *
  */
 //@Entity
-public class Shipment implements Serializable {
+public class Shipment implements Serializable, Persistable {
 
 	/**
 	 * 
@@ -20,23 +20,33 @@ public class Shipment implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//@Id
-	private int id;
+	private String id;
 	
 	private String address;
 	
-	private Date shipDate;
+	private String shipDate;
 
 	private Employee owner;
 	
+	
+	public Shipment(String id, String address, String shipDate, Employee owner) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.shipDate = shipDate;
+		this.owner = owner;
+	}
+
 	public Shipment() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	@Override
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -48,11 +58,11 @@ public class Shipment implements Serializable {
 		this.address = address;
 	}
 
-	public Date getShipDate() {
+	public String getShipDate() {
 		return shipDate;
 	}
 
-	public void setShipDate(Date shipDate) {
+	public void setShipDate(String shipDate) {
 		this.shipDate = shipDate;
 	}
 
@@ -66,6 +76,12 @@ public class Shipment implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@Override
+	public String getType() {
+		
+		return "Shipment";
 	}
 	
 	

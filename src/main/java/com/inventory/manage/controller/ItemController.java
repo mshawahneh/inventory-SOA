@@ -23,15 +23,14 @@ import com.inventory.manage.service.item.ItemsService;
  *
  */
 @RestController
-@RequestMapping("/items")
+@RequestMapping("api/item")
 public class ItemController {
 	
 	@Autowired
 	private ItemsService itemsService;
 	
 	
-	@RequestMapping(value = "/create" ,
-			method = RequestMethod.POST,  
+	@RequestMapping(method = RequestMethod.POST,  
 			consumes = "application/json",
             produces = "application/json")
 	public ResponseEntity<Item> addItem(@RequestBody  Item item, 
