@@ -38,17 +38,17 @@ public class OrderController {
 		if (orderService.isExist(order.getId())) {
 			return new ResponseEntity<Order>(HttpStatus.CONFLICT);
 		}
-		if(order.getPurchasedItems() == null || order.getPurchasedItems().isEmpty()){
-			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
-		}
-		
-		if(order.getCustomer() == null){
-			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
-		}
-		
-		if(order.getShipment() == null){
-			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
-		}
+//		if(order.getPurchasedItems() == null || order.getPurchasedItems().isEmpty()){
+//			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+//		}
+//		
+//		if(order.getCustomer() == null){
+//			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+//		}
+//		
+//		if(order.getShipment() == null){
+//			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
+//		}
 		
 		Order order1 = orderService.addOrder(order);
 		

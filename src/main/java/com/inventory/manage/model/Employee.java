@@ -34,6 +34,10 @@ public class Employee implements Serializable, Persistable{
 
 	private String website;
 
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Employee(String id, String name, String address, String phone, 
 			String email, String companyName, String notes) {
 		this.id = id;

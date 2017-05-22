@@ -22,6 +22,10 @@ public class Health implements Serializable, Persistable{
 
 	private String healthStatus;
 
+	public Health() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getBmi() {
 		return bmi;
 	}

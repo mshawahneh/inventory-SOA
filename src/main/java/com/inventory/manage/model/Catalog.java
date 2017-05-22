@@ -21,6 +21,10 @@ public class Catalog implements Persistable{
 	private float rate; 
 	private String supplier;
 	
+	public Catalog() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Catalog(String id, String name, double price, long tax, int warranty, 
 			String depreciation, float rate, String supplier) {
 		this.id = id;

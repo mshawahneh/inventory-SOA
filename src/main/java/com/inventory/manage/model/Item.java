@@ -39,6 +39,9 @@ public class Item implements Serializable, Persistable {
 		this.rate=rate;
 	}
 	
+	public Item() {
+		
+	}
 	public String getRate() {
 		return rate;
 	}
