@@ -20,7 +20,7 @@ public class Customer implements Serializable, Persistable{
 //	private String CustomerID;
 	private String CustomerFirstName;
 	private String CustomerLastName;
-	private Date CustomerBirthDate;
+	private String CustomerBirthDate;
 	private String email;
 	private Long accountBalance;
 	private String currency;
@@ -61,10 +61,10 @@ public class Customer implements Serializable, Persistable{
 	public void setCustomerLastName(String customerLastName) {
 		CustomerLastName = customerLastName;
 	}
-	public Date getCustomerBirthDate() {
+	public String getCustomerBirthDate() {
 		return CustomerBirthDate;
 	}
-	public void setCustomerBirthDate(Date customerBirthDate) {
+	public void setCustomerBirthDate(String customerBirthDate) {
 		CustomerBirthDate = customerBirthDate;
 	}
 	

@@ -28,9 +28,9 @@ public class Payment implements Serializable, Persistable {
 	
 	int state = AUTHORIZED;
 	
-	Date createTime;
+	String createTime;
 	
-	Date updateTime;
+	String updateTime;
 	
 
 	
@@ -95,7 +95,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @return the createTime
 	 */
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
 
@@ -103,7 +103,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @param createTime the createTime to set
 	 */
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 
@@ -111,7 +111,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @return the updateTime
 	 */
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
 
@@ -119,7 +119,7 @@ public class Payment implements Serializable, Persistable {
 	/**
 	 * @param updateTime the updateTime to set
 	 */
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 
