@@ -22,7 +22,7 @@ public class CurrencyConverterSOAPServiceImpl extends WebServiceGatewaySupport i
 	@Override
 	public int convertCurrency(int amount, String fromCurrency, String toCurrency) {
 
-		return (int) (getCurrencyConversionRate(fromCurrency, toCurrency) * amount);
+		return getCurrencyConversionRate(fromCurrency, toCurrency) * amount;
 	}
 	
 	double getCurrencyConversionRate(String fromCurrency, String toCurrency){

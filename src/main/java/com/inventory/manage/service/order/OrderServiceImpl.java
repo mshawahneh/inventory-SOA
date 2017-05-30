@@ -41,6 +41,7 @@ public class OrderServiceImpl implements OrderService {
 			
 			if("USD".equals(currency)){
 				total = currencyService.convertCurrency((int)total, "USD", "ILS");
+				
 			}
 			calculatedOrder.setTotal(total);
 		}
