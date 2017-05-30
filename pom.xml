@@ -113,6 +113,10 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.4.0</version>
 		</dependency>
+		<dependency>
+               <groupId>org.springframework.ws</groupId>
+               <artifactId>spring-ws-core</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>
@@ -121,6 +125,64 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <executions>
+                    <execution>
+                     	<id>generate</id>
+           				<phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <generatePackage>com.inventory.manage.wsdl</generatePackage>
+                    <sources>
+                    	<source>${project.build.directory}/generated-sources/java/</source>
+                	</sources>
+                    <schemas>
+                        <schema>
+                            <url>http://www.webservicex.com/CurrencyConvertor.asmx?wsdl</url>
+                        </schema>
+                    </schemas>
+                </configuration>
+            </plugin>
+            <plugin>
+            <groupId>org.eclipse.m2e</groupId>
+            <artifactId>lifecycle-mapping</artifactId>
+            <version>1.0.0</version>
+            <configuration>
+                <lifecycleMappingMetadata>
+                      <pluginExecutions>
+                        <pluginExecution>
+                          <pluginExecutionFilter>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>build-helper-maven-plugin</artifactId>
+                            <versionRange>[1.0,)</versionRange>
+                            <goals>
+                              <goal>parse-version</goal>
+                              <goal>generate</goal>
+                              <goal>maven-version</goal>
+                              <goal>add-resource</goal>
+                              <goal>add-test-resource</goal>
+                              <goal>add-test-source</goal>
+                            </goals>
+                          </pluginExecutionFilter>
+                          <action>
+                            <execute>
+                              <runOnConfiguration>true</runOnConfiguration>
+                              <runOnIncremental>true</runOnIncremental>
+                            </execute>
+                          </action>
+                        </pluginExecution>
+                    </pluginExecutions>
+                </lifecycleMappingMetadata>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 

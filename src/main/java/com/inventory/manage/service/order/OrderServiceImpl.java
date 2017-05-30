@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.inventory.manage.model.Item;
 import com.inventory.manage.model.Order;
 import com.inventory.manage.repositories.OrderRepository;
+import com.inventory.manage.service.currency.CurrencyConverterSOAPService;
 import com.inventory.manage.util.PersistenceService;
 
 /**
@@ -24,6 +25,8 @@ public class OrderServiceImpl implements OrderService {
 //	@Autowired
 //	private OrderRepository orderRepository;
 
+	@Autowired
+	private CurrencyConverterSOAPService currencyService;
 	
 	@Override
 	public Order addOrder(Order order) {
@@ -33,6 +36,11 @@ public class OrderServiceImpl implements OrderService {
 			long total = 0;
 			for(Item item: calculatedOrder.getPurchasedItems()){
 				total += (item.getSellingPrice() * item.getQuantity());
+			}
+			String currency = calculatedOrder.getCustomer().getCurrency();
+			
+			if("USD".equals(currency)){
+				total = currencyService.convertCurrency((int)total, "USD", "ILS");
 			}
 			calculatedOrder.setTotal(total);
 		}
