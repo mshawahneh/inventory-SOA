@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import com.inventory.manage.service.currency.CurrencyConverterSOAPServiceImpl;
-import com.inventory.manage.service.soap.QuoteClient;
 
 @Configuration
 public class CurrencyConfiguration {
@@ -23,7 +22,7 @@ public class CurrencyConfiguration {
 	@Bean
 	public CurrencyConverterSOAPServiceImpl currencyClient(Jaxb2Marshaller marshaller) {
 		CurrencyConverterSOAPServiceImpl client = new CurrencyConverterSOAPServiceImpl();
-		client.setDefaultUri("http://www.webservicex.com/currencyconvertor.asmx");
+		client.setDefaultUri("http://www.webservicex.com/CurrencyConvertor.asmx?wsdl");
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
 		return client;

@@ -17,5 +17,5 @@ public interface CurrencyConverterSOAPService {
 	 * @param toCurrency
 	 * @return
 	 */
-	int convertCurrency(int ammount, String fromCurrency, String toCurrency);
+	public int convertCurrency(int ammount, String fromCurrency, String toCurrency);
 }
