@@ -50,6 +50,9 @@ public class OrderController {
 //			return new ResponseEntity<Order>(HttpStatus.BAD_REQUEST);
 //		}
 		
+		System.out.println("ship "+order.getShipment());
+		System.out.println("Payment "+order.getPayment());
+		
 		Order order1 = orderService.addOrder(order);
 		
 		return new ResponseEntity<Order>(order1, HttpStatus.OK);

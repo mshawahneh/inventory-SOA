@@ -84,5 +84,9 @@ public class Shipment implements Serializable, Persistable {
 		return "Shipment";
 	}
 	
+	@Override
+	public String toString() {
+		return "Shipment id "+id;
+	}
 	
 }

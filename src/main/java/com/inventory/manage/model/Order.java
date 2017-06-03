@@ -174,7 +174,7 @@ public class Order implements Serializable, Persistable {
 		return "Order [id=" + id + ", number=" + number + ", quantity=" + quantity
 				+ ", dateplaced=" + datePlaced + ", dateReceived="
 				+ dateReceived + ", outstanding=" + outstanding
-				+ ", addedToStock=" + addedToStock + "]";
+				+ ", addedToStock=" + addedToStock + payment +" shipment "+shipment+ "]";
 	}
 
 	@Override

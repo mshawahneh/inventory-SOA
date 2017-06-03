@@ -130,5 +130,9 @@ public class Payment implements Serializable, Persistable {
 		return "Payment";
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return "Payment id "+id;
+	}
 }
